@@ -9,7 +9,7 @@ func TestNewDbConnectionSettings(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 
 		os.Setenv("SYNCBALL_DB_NAME", "testdb")
-		os.Setenv("SYNCBALL_DB_ADDRESS", "localhost")
+		os.Setenv("SYNCBALL_DB_HOST", "localhost")
 		os.Setenv("SYNCBALL_DB_USERNAME", "testuser")
 		os.Setenv("SYNCBALL_DB_PASSWORD", "testpass")
 

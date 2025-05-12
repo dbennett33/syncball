@@ -19,6 +19,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("error creating new DbConn: %v", err)
 	}
+	defer conn.Close()
 	
 	if err := conn.Migrate(); err != nil {
 		log.Fatalf("error migrating database: %v", err)

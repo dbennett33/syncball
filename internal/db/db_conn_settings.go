@@ -10,7 +10,7 @@ import (
 
 type DbConnectionSettings struct {
 	dbName     string
-	dbAddress  string
+	dbHost     string
 	dbUsername string
 	dbPassword string
 	isInit     bool
@@ -46,7 +46,7 @@ func (dbcs *DbConnectionSettings) loadEnvFile() {
 	}
 
 	dbcs.dbName = os.Getenv("SYNCBALL_DB_NAME")
-	dbcs.dbAddress = os.Getenv("SYNCBALL_DB_ADDRESS")
+	dbcs.dbHost = os.Getenv("SYNCBALL_DB_HOST")
 	dbcs.dbUsername = os.Getenv("SYNCBALL_DB_USERNAME")
 	dbcs.dbPassword = os.Getenv("SYNCBALL_DB_PASSWORD")
 }
@@ -55,8 +55,8 @@ func (dbcs *DbConnectionSettings) isValid() error {
 	if dbcs.dbName == "" {
 		return fmt.Errorf("dbName is required")
 	}
-	if dbcs.dbAddress == "" {
-		return fmt.Errorf("dbAddress is required")
+	if dbcs.dbHost == "" {
+		return fmt.Errorf("dbHost is required")
 	}
 	if dbcs.dbUsername == "" {
 		return fmt.Errorf("dbUsername is required")
@@ -71,7 +71,7 @@ func (dbcs *DbConnectionSettings) isValid() error {
 func (dbcs *DbConnectionSettings) generateDsn() {
 	dbcs.dsn = fmt.Sprintf(
 		"host=%s user=%s password=%s dbname=%s port=5432 sslmode=disable",
-		dbcs.dbAddress,
+		dbcs.dbHost,
 		dbcs.dbUsername,
 		dbcs.dbPassword,
 		dbcs.dbName,
