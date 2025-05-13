@@ -14,23 +14,20 @@ func main() {
 	if err != nil {
 		log.Fatalf("error creating new DbConnectionSettings: %v", err)
 	}
+	log.Print("database connection settings created")
 
 	conn, err := db.NewDbConn(connSettings)
 	if err != nil {
 		log.Fatalf("error creating new DbConn: %v", err)
 	}
 	defer conn.Close()
-	
+	log.Print("database connection opened")
+
 	if err := conn.Migrate(); err != nil {
 		log.Fatalf("error migrating database: %v", err)
 	}
+	log.Print("database migrated successfully")
 	
-	// db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	//
-	//	if err != nil {
-	//		log.Fatalf("Failed to connect to database: %v", err)
-	//	}
-	//
 	// drop := false
 	//
 	//	if drop {
