@@ -11,10 +11,12 @@ type ICountryRepository interface {
 	Upsert(country *models.Country) error
 	UpsertRange(countries []*models.Country) error
 	Delete(id int) error
+	 
 }
 
+
 type CountryRepository struct {
-	db gorm.DB
+
 }
 
 func (repo *CountryRepository) GetByID(id int) (*models.Country, error) {

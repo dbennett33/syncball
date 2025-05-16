@@ -30,6 +30,11 @@ func (dbc *DbConn) Migrate() error {
 		&models.Country{},
 		&models.League{},
 		&models.Team{},
+		&models.Season{},
+		&models.LeagueSeason{},
+		&models.Venue{},
+		&models.Player{},
+		&models.Fixture{},
 	); err != nil {
 		return err
 	}
