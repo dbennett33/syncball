@@ -12,6 +12,10 @@ type DbConn struct {
 	db *gorm.DB
 }
 
+func (db *DbConn) Db() *gorm.DB {
+	return db.db
+}
+
 func NewDbConn(dbcs *DbConnectionSettings) (*DbConn, error) {
 	var dbc DbConn
 	if !dbcs.IsInit() {
