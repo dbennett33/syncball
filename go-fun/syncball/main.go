@@ -1,35 +1,14 @@
 package main
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/dbennett33/syncball/internal/db"
+	"github.com/dbennett33/syncball/internal/syncball"
 )
 
 func main() {
-	fmt.Println("Syncball system initialising")
-	initDb()	
-}
+	app := syncball.NewApp()
+	app.Init()
+	app.Run()
 
-func initDb() {
-	connSettings, err := db.NewDbConnectionSettings()
-	if err != nil {
-		log.Fatalf("error creating new DbConnectionSettings: %v", err)
-	}
-	log.Print("database connection settings created")
-
-	conn, err := db.NewDbConn(connSettings)
-	if err != nil {
-		log.Fatalf("error creating new DbConn: %v", err)
-	}
-	defer conn.Close()
-	log.Print("database connection opened")
-
-	if err := conn.Migrate(); err != nil {
-		log.Fatalf("error migrating database: %v", err)
-	}
-	log.Print("database migrated successfully")
 }
 
 //func dropAllTables(db *gorm.DB) error {

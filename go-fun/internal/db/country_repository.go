@@ -2,7 +2,6 @@ package db
 
 import (
 	"github.com/dbennett33/syncball/internal/db/models"
-	"gorm.io/gorm"
 )
 
 type ICountryRepository interface {
@@ -11,12 +10,9 @@ type ICountryRepository interface {
 	Upsert(country *models.Country) error
 	UpsertRange(countries []*models.Country) error
 	Delete(id int) error
-	 
 }
 
-
 type CountryRepository struct {
-
 }
 
 func (repo *CountryRepository) GetByID(id int) (*models.Country, error) {
