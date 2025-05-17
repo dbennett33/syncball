@@ -1,6 +1,6 @@
 namespace Syncball.Core.Data.Models;
 
-public class Fixture 
+public class Fixture
 {
     public int Id { get; set; }
     public DateTime LastUpdated { get; set; }
@@ -30,9 +30,7 @@ public class Fixture
     public int GoalsHomeTeamET { get; set; }
     public int GoalsAwayTeamET { get; set; }
     public int GoalsHomeTeamPen { get; set; }
-    public int GoalsAwayTeamPen { get; set;}
+    public int GoalsAwayTeamPen { get; set; }
     public int FixtureStatsId { get; set; }
     public ICollection<FixtureStats> Stats { get; set; } = null!;
-
-
 }
