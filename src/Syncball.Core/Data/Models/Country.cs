@@ -9,5 +9,4 @@ public class Country
     public string FlagUrl { get; set; } = string.Empty;
     public bool Enabled { get; set; }
     public ICollection<League> Leagues { get; set; } = null!;
-
 }
