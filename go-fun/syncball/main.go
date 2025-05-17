@@ -46,7 +46,7 @@ func initDb() {
 //	return nil
 //}
 
-//func addCountry(db *gorm.DB, c entities.Country) error {
+q//func addCountry(db *gorm.DB, c entities.Country) error {
 //	db.Create(&c)
 //	return nil
 //}

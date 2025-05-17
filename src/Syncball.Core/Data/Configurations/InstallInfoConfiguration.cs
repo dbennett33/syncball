@@ -1,0 +1,40 @@
+namespace Syncball.Core.Data.Configurations;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Syncball.Core.Data.Models;
+
+public class InstallInfoConfiguration : IEntityTypeConfiguration<InstallInfo>
+{
+    public void Configure(EntityTypeBuilder<InstallInfo> builder)
+    {
+
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.Id)
+            .HasColumnName("Id")
+            .ValueGeneratedOnAdd();
+
+        builder.Property(e => e.SystemSettingsId)
+            .HasColumnName("SystemSettingsId");
+
+        builder.Property(e => e.Version)
+            .HasColumnName("Version")
+            .HasMaxLength(50)
+            .IsRequired();
+
+        builder.Property(e => e.CountriesInstalled)
+            .HasColumnName("CountriesInstalled")
+            .IsRequired();
+
+        builder.Property(e => e.LeaguesInstalled)
+            .HasColumnName("LeaguesInstalled")
+            .IsRequired();
+
+        builder.HasOne(e => e.SystemSettings)
+            .WithMany()
+            .HasForeignKey(e => e.SystemSettingsId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+    }
+}
